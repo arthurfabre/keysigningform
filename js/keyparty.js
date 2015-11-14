@@ -31,19 +31,24 @@ var updatePublicKey = function(key) {
     publicKey = newPublicKey.keys[0];
 
     keyInfo();
-}
+};
 
 var keyError = function(msg) {
     publicKeyError.text(msg);
-    publicKeyInfo.hide();
-    publicKeyError.show();
-}
+    setKeyError(true);
+};
 
 var keyInfo = function() {
     publicKeyInfo.text(publicKey.getPrimaryUser().user.userId.userid);
-    publicKeyError.hide();
-    publicKeyInfo.show();
-}
+    setKeyError(false);
+};
+
+var setKeyError = function(isError) {
+    $('.key-button').attr("disabled", isError);
+
+    publicKeyError.attr("hidden", !isError);
+    publicKeyInfo.attr("hidden", isError);
+};
 
 $('#public-key-input').each(function() {
     var elem = $(this);
