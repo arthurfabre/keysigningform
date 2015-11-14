@@ -8,45 +8,47 @@
 </head>
 
 <body>
-    <h1>SUCSS Key Signing Party SignUp Form</h1>
+    <h1>SUCSS Key Signing Party</h1>
 
-    <p>In order to sign up for the SUCSS PGP Key signing party, please:</p>
-    <ol class="instructions">
+    <p>Before signing up for the SUCSS PGP Key signing party, please ensure:</p>
+    <ul class="instructions">
         <li>
-            If you don't already have a PGP key, generate one following the <a href="TODO">instructions on our wiki</a>.
+            You have a PGP key. If you don't, generate one following the <a href="TODO">instructions on our wiki</a>.
         </li>
-
         <li>
-            Export your <strong>public</strong> PGP key.
-            <ul>
-                <li>Linux: TODO</li>
-                <li>Windows: TODO</li>
-                <li>MAC: TODO</li>
-            </ul>
-        </li>
-
-        <li>
-            <form id="public-key-form">
-                <label>
-                    Paste your exported key here:
-                    <input id="public-key" type="text" placeholder="ASCII armored PGP key" required></input>
-                </label>
-            </form>
-             We will sanity check your key in your browser before submitting it.
-        </li>
-
-        <li>
-             Verify the details we extracted from your key are correct. If they aren't please fix your key.
-        </li>
-
-        <li>
-             Print off the generated slip.
-        </li>
-
-        <li>
-             Submit the form.
+            You have a GnuPG installed. If you don't, see the <a href="TODO">instructions on our wiki</a>.
         </li>
     </ul>
+
+    <p>Next, please:</p>
+    <ol class="instructions">
+        <li>
+            Export your <strong>public</strong> PGP key.
+            <pre><code>gpg --armor --export <i>your_email</i></code></pre>
+        </li>
+
+        <li>
+            Paste your exported key here:
+            <form id="public-key-form">
+                <!-- GPG output seems to always be 64 chars long -->
+                <textarea id="public-key-input" type="text" cols="64" rows="10" placeholder="ASCII armored PGP key" required></textarea>
+            </form>
+        </li>
+
+        <li>
+            Check the details below are correct:
+            <div id="public-key-feedback">
+            </div>
+        </li>
+
+        <li>
+             Print your key slip (remember to bring it to the party!).
+        </li>
+
+        <li>
+             Confirm your participation!
+        </li>
+    </ol>
     
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/jspdf.min.js"></script>
