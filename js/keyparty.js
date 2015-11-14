@@ -21,21 +21,29 @@ var updatePublicKey = function(key) {
         return;
     }
 
-    var newPublicKey = openpgp.key.readArmored(key);
+    var result = openpgp.key.readArmored(key);
 
     // Check for any errors
-    if (newPublicKey.err && newPublicKey.err.length > 0) {
-        keyError(newPublicKey.err[0].message);
+    if (result.err && result.err.length > 0) {
+        keyError(result.err[0].message);
         return;
     }
 
+    var newPublicKey = result.keys[0];
+
     // Check the key is not a private key
-    if (newPublicKey.keys[0].isPrivate()) {
+    if (newPublicKey.isPrivate()) {
         keyError("The key you have supplied is a PRIVATE key!");
         return;
     }
+    
+    // Check the key is valid
+    if (newPublicKey.verifyPrimaryKey() !== openpgp.enums.keyStatus.valid) {
+        keyError("Invalid key (expired | revoked | no_self_cert)");
+        return;
+    }
 
-    publicKey = newPublicKey.keys[0];
+    publicKey = newPublicKey;
 
     keyInfo();
 };
