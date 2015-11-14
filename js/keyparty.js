@@ -39,7 +39,8 @@ var keyError = function(msg) {
 };
 
 var keyInfo = function() {
-    publicKeyInfo.text(publicKey.getPrimaryUser().user.userId.userid);
+    publicKeyInfo.html(tmpl("key_template", publicKey));
+    //publicKeyInfo.text(publicKey.getPrimaryUser().user.userId.userid);
     setKeyError(false);
 };
 

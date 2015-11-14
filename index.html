@@ -38,9 +38,7 @@
         <li>
             Check the details below are correct:
             <p id="public-key-error"></p>
-            <p id="public-key-info" hidden>
-                Invisible!
-            </p>
+            <div id="public-key-info"></div>
         </li>
 
         <li>
@@ -51,10 +49,21 @@
             <button class="key-button">Confirm your participation!</button>
         </li>
     </ol>
+
+    <!-- Template for key info and key slip -->
+    <script type="text/html" id="key_template">
+        <table>
+            <tr>
+                <td>Primary UID<td>
+                <td><%=publicKey.getPrimaryUser().user.userId.userid%>
+            </tr>
+        </table>
+    </script>
     
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/jspdf.min.js"></script>
     <script src="js/openpgp.min.js"></script>
+    <script src="js/template.js"></script>
     <script src="js/keyparty.js"></script>
 </body>
 </html>
