@@ -78,6 +78,18 @@ var getBitLength = function(key) {
     return size;
 };
 
+/**
+ * Get a string representing the expiration time / date of the key.
+ */
+var getExpiration = function(key) {
+    if (key.getExpirationTime() === null) {
+        return "No expiry";
+
+    } else {
+        return key.getExpirationTime().toLocaleString();
+    }
+}
+
 $('#public-key-input').each(function() {
     var elem = $(this);
     var timer = 0;
