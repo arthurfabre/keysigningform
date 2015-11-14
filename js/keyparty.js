@@ -32,19 +32,17 @@ var updatePublicKey = function(key) {
 
 $('#public-key-input').each(function() {
     var elem = $(this);
-
-    // Save current value of element
-    elem.data('oldVal', elem.val());
+    var timer = 0;
 
     // Look for changes in the value
     elem.bind("propertychange change click keyup input paste", function(event) {
-        // If value has changed...
-        if (elem.data('oldVal') != elem.val()) {
-            // Updated stored value
-            elem.data('oldVal', elem.val());
-            // Do action
+
+        // Use a timer to ensure we don't run all the time - other we can lock up the browser
+        clearTimeout(timer);
+        
+        timer = setTimeout(function(){
             updatePublicKey(elem.val());
-        }
+        }, 200);
     });
 });
 
