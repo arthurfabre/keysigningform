@@ -94,7 +94,7 @@ var getExpiration = function(key) {
  * Get the fingerprint of a key as hex
  */
 var getFingerPrint = function(key) {
-    return key.primaryKey.getFingerprint().toUpperCase();
+    return key.primaryKey.getFingerprint().toUpperCase().replace(/(.{4})/g,"$1 ");
 }
 
 $('#public-key-input').each(function() {
