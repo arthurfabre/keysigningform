@@ -90,6 +90,13 @@ var getExpiration = function(key) {
     }
 }
 
+/**
+ * Get the fingerprint of a key as hex
+ */
+var getFingerPrint = function(key) {
+    return key.primaryKey.getFingerprint().toUpperCase();
+}
+
 $('#public-key-input').each(function() {
     var elem = $(this);
     var timer = 0;
