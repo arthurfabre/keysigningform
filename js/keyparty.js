@@ -66,6 +66,18 @@ var setKeyError = function(isError) {
     publicKeyInfo.attr("hidden", isError);
 };
 
+/**
+ * Get the size in bits of a public key.
+ */
+var getBitLength = function(key) {
+    var publicKeyPacket = key.primaryKey;
+    var size = -1;
+    if (publicKeyPacket.mpi.length > 0) {
+        size = (publicKeyPacket.mpi[0].byteLength() * 8);
+    }
+    return size;
+};
+
 $('#public-key-input').each(function() {
     var elem = $(this);
     var timer = 0;

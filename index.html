@@ -54,8 +54,16 @@
     <script type="text/html" id="key_template">
         <table>
             <tr>
-                <td>Primary UID<td>
-                <td><%=publicKey.getPrimaryUser().user.userId.userid%>
+                <td>Primary UID</td>
+                <td><%=publicKey.getPrimaryUser().user.userId.userid%></td>
+            </tr>
+            <tr>
+                <td>Size</td>
+                <td><%=getBitLength(publicKey)%></td>
+            </tr>
+            <tr>
+                <td>Fingerprint</td>
+                <td> TODO </td>
             </tr>
         </table>
     </script>
