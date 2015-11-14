@@ -28,8 +28,8 @@
         </li>
 
         <li>
-            Paste your exported key here:
-            <form id="public-key-form">
+            Copy - paste your exported key here:
+            <form>
                 <!-- GPG output seems to always be 64 chars long -->
                 <textarea id="public-key-input" type="text" cols="64" rows="10" placeholder="ASCII armored PGP key" required></textarea>
             </form>
@@ -37,16 +37,18 @@
 
         <li>
             Check the details below are correct:
-            <div id="public-key-feedback">
-            </div>
+            <p id="public-key-error"></p>
+            <p id="public-key-info" hidden>
+                Invisible!
+            </p>
         </li>
 
         <li>
-             Print your key slip (remember to bring it to the party!).
+            <button>Print your key slip</button> (remember to bring it to the party!).
         </li>
 
         <li>
-             Confirm your participation!
+            <button>Confirm your participation!</button>
         </li>
     </ol>
     

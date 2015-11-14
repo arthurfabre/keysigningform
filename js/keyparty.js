@@ -6,28 +6,43 @@
  */
 var publicKey;
 
+var publicKeyError = $('#public-key-error');
+var publicKeyInfo = $('#public-key-info');
+
 /**
  * Update the public key inputted by the user.
  * This will set publicKey and update the feedback message.
  */
 var updatePublicKey = function(key) {
+    publicKey = null;
+
     if (key === "") {
-        $('#public-key-feedback').text("No key entered");
-        publicKey = null;
+        keyError("No key entered");
         return;
     }
 
     var newPublicKey = openpgp.key.readArmored(key);
  
     if (newPublicKey.err && newPublicKey.err.length > 0) {
-        $('#public-key-feedback').text(newPublicKey.err[0].message);
-        publicKey = null;
+        keyError(newPublicKey.err[0].message);
         return;
     }
 
     publicKey = newPublicKey.keys[0];
 
-    $('#public-key-feedback').text(publicKey.getPrimaryUser().user.userId.userid);
+    keyInfo();
+}
+
+var keyError = function(msg) {
+    publicKeyError.text(msg);
+    publicKeyInfo.hide();
+    publicKeyError.show();
+}
+
+var keyInfo = function() {
+    publicKeyInfo.text(publicKey.getPrimaryUser().user.userId.userid);
+    publicKeyError.hide();
+    publicKeyInfo.show();
 }
 
 $('#public-key-input').each(function() {

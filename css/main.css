@@ -2,3 +2,12 @@
     margin-top: 10px;
     margin-bottom:10px;
 }
+
+#public-key-error {
+    font-style: italic;
+    color: #e86666;
+}
+
+#public-key-info {
+    color: #5add6a;
+}
