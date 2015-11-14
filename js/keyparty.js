@@ -22,9 +22,16 @@ var updatePublicKey = function(key) {
     }
 
     var newPublicKey = openpgp.key.readArmored(key);
- 
+
+    // Check for any errors
     if (newPublicKey.err && newPublicKey.err.length > 0) {
         keyError(newPublicKey.err[0].message);
+        return;
+    }
+
+    // Check the key is not a private key
+    if (newPublicKey.keys[0].isPrivate()) {
+        keyError("The key you have supplied is a PRIVATE key!");
         return;
     }
 
