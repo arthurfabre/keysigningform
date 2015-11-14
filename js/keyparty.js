@@ -109,6 +109,11 @@ var setKeyError = function(isError) {
 var genSlip = function() {
     var slip = new jsPDF();
     
+    slip.fromHTML(tmpl("key_template", publicKey), 15, 15, {
+        'width': 200
+    });
+
+    slip.save('Slip.pdf');
 }
 
 $('#public-key-input').each(function() {
