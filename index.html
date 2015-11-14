@@ -8,8 +8,46 @@
 </head>
 
 <body>
-    <h1>TODO</h1>
+    <h1>SUCSS Key Signing Party SignUp Form</h1>
 
+    <p>In order to sign up for the SUCSS PGP Key signing party, please:</p>
+    <ol class="instructions">
+        <li>
+            If you don't already have a PGP key, generate one following the <a href="TODO">instructions on our wiki</a>.
+        </li>
+
+        <li>
+            Export your <strong>public</strong> PGP key.
+            <ul>
+                <li>Linux: TODO</li>
+                <li>Windows: TODO</li>
+                <li>MAC: TODO</li>
+            </ul>
+        </li>
+
+        <li>
+            <form id="public-key-form">
+                <label>
+                    Paste your exported key here:
+                    <input id="public-key" type="text" placeholder="ASCII armored PGP key" required></input>
+                </label>
+            </form>
+             We will sanity check your key in your browser before submitting it.
+        </li>
+
+        <li>
+             Verify the details we extracted from your key are correct. If they aren't please fix your key.
+        </li>
+
+        <li>
+             Print off the generated slip.
+        </li>
+
+        <li>
+             Submit the form.
+        </li>
+    </ul>
+    
     <script src="js/openpgp.min.js"></script>
     <script src="js/keyparty.js"></script>
 </body>
