@@ -9,6 +9,46 @@ var publicKey;
 var publicKeyError = $('#public-key-error');
 var publicKeyInfo = $('#public-key-info');
 
+
+/**
+ * Get the size in bits of this key.
+ * Returns -1 on error.
+ */
+openpgp.key.Key.prototype.getSize = function() {
+    var publicKeyPacket = this.primaryKey;
+    var size = -1;
+    if (publicKeyPacket.mpi.length > 0) {
+        size = (publicKeyPacket.mpi[0].byteLength() * 8);
+    }
+    return size;
+};
+
+/**
+ * Get the primary user id
+ */
+openpgp.key.Key.prototype.getPrimaryUserId = function() {
+    return this.getPrimaryUser().user.userId.userid;
+};
+
+/**
+ * Get the fingerprint of this key as hex
+ */
+openpgp.key.Key.prototype.getFingerPrint = function() {
+    return this.primaryKey.getFingerprint().toUpperCase().replace(/(.{4})/g,"$1 ");
+}
+
+/**
+ * Get a string representing the expiration time / date
+ */
+openpgp.key.Key.prototype.getExpiration = function() {
+    if (this.getExpirationTime() === null) {
+        return "No expiry";
+
+    } else {
+        return this.getExpirationTime().toLocaleString();
+    }
+}
+
 /**
  * Update the public key inputted by the user.
  * This will set publicKey and update the feedback message.
@@ -66,35 +106,9 @@ var setKeyError = function(isError) {
     publicKeyInfo.attr("hidden", isError);
 };
 
-/**
- * Get the size in bits of a public key.
- */
-var getBitLength = function(key) {
-    var publicKeyPacket = key.primaryKey;
-    var size = -1;
-    if (publicKeyPacket.mpi.length > 0) {
-        size = (publicKeyPacket.mpi[0].byteLength() * 8);
-    }
-    return size;
-};
-
-/**
- * Get a string representing the expiration time / date of the key.
- */
-var getExpiration = function(key) {
-    if (key.getExpirationTime() === null) {
-        return "No expiry";
-
-    } else {
-        return key.getExpirationTime().toLocaleString();
-    }
-}
-
-/**
- * Get the fingerprint of a key as hex
- */
-var getFingerPrint = function(key) {
-    return key.primaryKey.getFingerprint().toUpperCase().replace(/(.{4})/g,"$1 ");
+var genSlip = function() {
+    var slip = new jsPDF();
+    
 }
 
 $('#public-key-input').each(function() {

@@ -55,19 +55,19 @@
         <table>
             <tr>
                 <td>Primary UID</td>
-                <td><%=publicKey.getPrimaryUser().user.userId.userid%></td>
+                <td><%=publicKey.getPrimaryUserId()%></td>
             </tr>
             <tr>
                 <td>Size</td>
-                <td><%=getBitLength(publicKey)%></td>
+                <td><%=publicKey.getSize()%></td>
             </tr>
             <tr>
                 <td>Fingerprint</td>
-                <td><%=getFingerPrint(publicKey)%></td>
+                <td><%=publicKey.getFingerPrint()%></td>
             </tr>
             <tr>
                 <td>Expiration</td>
-                <td><%=getExpiration(publicKey)%></td>
+                <td><%=publicKey.getExpiration()%></td>
             </tr>
         </table>
     </script>
