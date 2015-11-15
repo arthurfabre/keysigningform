@@ -9,7 +9,7 @@ if(isset($_POST['key'])) {
 
     $key = $_POST['key'];
     $res = gnupg_init();
-    $array = gnupg_import($res, $data);
+    $array = gnupg_import($res, $key);
     
     if(isset($array['fingerprint'])) {
         echo "Key succesfully submitted";
