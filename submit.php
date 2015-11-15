@@ -1,6 +1,6 @@
 <?php
 
-$key_dir = '/var/keys';
+$key_dir = '/var/keys/';
 
 /**
  * Check if a given key is valid.
@@ -36,7 +36,7 @@ if(fp === False) {
     die;
 }
 
-if (file_put_contents("$fp.pgp", $key) === False) {
+if (file_put_contents("$key_dir$fp.pgp", $key) === False) {
     echo "Error saving key";
     die;
 }
