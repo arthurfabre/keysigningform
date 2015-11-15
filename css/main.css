@@ -3,12 +3,12 @@
     margin-bottom:10px;
 }
 
-#public-key-error {
+.error {
     font-style: italic;
     color: #e86666;
 }
 
-#public-key-info {
+.info {
     color: #21a530;
 }
 

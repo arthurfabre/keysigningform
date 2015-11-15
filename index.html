@@ -31,14 +31,14 @@
             Copy - paste your exported key here:
             <form>
                 <!-- GPG output seems to always be 64 chars long -->
-                <textarea id="public-key-input" type="text" cols="64" rows="10" placeholder="ASCII armored PGP key" required></textarea>
+                <textarea id="public-key-input" name="key" type="text" cols="64" rows="10" placeholder="ASCII armored PGP key" required></textarea>
             </form>
         </li>
 
         <li>
             Check the details below are correct:
-            <p id="public-key-error"></p>
-            <div id="public-key-info"></div>
+            <p class="error" id="public-key-error"></p>
+            <div class="info" id="public-key-info"></div>
         </li>
 
         <li>
@@ -46,7 +46,9 @@
         </li>
 
         <li>
-            <button class="key-button">Confirm your participation!</button>
+            <button class="key-button" onclick="submitKey();">Confirm your participation!</button>
+            <p class="error" id="submission-error" hidden></p>
+            <p class="info" id="submission-info" hidden></p>
         </li>
     </ol>
 

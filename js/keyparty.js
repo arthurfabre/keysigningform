@@ -114,7 +114,23 @@ var genSlip = function() {
     });
 
     slip.save('Slip.pdf');
-}
+};
+
+var submitKey = function() {
+    $.post("/submit.php", {'key': publicKey.armor()})
+        .always(function() {
+            $('#submission-error').hide(); 
+            $('#submission-info').hide(); 
+        })
+        .done(function(data) {
+            $('#submission-info').text(data); 
+            $('#submission-info').show(); 
+        })
+        .fail(function(data) {
+            $('#submission-error').text(data === "" ? "Unknown error" : data); 
+            $('#submission-error').show(); 
+        });
+};
 
 $('#public-key-input').each(function() {
     var elem = $(this);
