@@ -117,7 +117,7 @@ var genSlip = function() {
 };
 
 var submitKey = function() {
-    $.post("/submit.php", {'key': publicKey.armor()})
+    $.post("submit.php", {'key': publicKey.armor()})
         .always(function() {
             $('#submission-error').hide(); 
             $('#submission-info').hide(); 
