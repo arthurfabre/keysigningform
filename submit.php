@@ -7,7 +7,7 @@ $key_dir = '/var/keys/';
  * Returns the key's fingerprint if the key is valid, false otherwise.
  */
 function get_fp($key) {
-    if(!putenv("GNUPGHOME='/tmp/.gnupg/'")) {
+    if(!putenv("GNUPGHOME=/tmp/.gnupg/")) {
         echo "Error setting environment";
         die;
     }
@@ -31,7 +31,7 @@ $key = $_POST['key'];
 
 $fp = get_fp($key);
 
-if(fp === False) {
+if($fp === False) {
     echo "Invalid key";
     die;
 }
